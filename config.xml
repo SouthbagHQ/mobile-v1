@@ -39,4 +39,10 @@
 <platform name="ios">
     <icon src="res/icon.png" />
 </platform>
+<platform name="browser">
+    <preference name="ShowSplashScreen" value="false" />
+    <preference name="SplashScreen" value="none" />
+    <preference name="SplashScreenDelay" value="0" />
+    <preference name="AutoHideSplashScreen" value="true" />
+</platform>
 </widget>
