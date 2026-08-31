@@ -1,0 +1,1851 @@
+/* i vibed this */
+/*
+ * jqlook.css
+ *
+ * jQuery Mobile 1.4-style appearance WITHOUT jQuery Mobile.
+ *
+ * Supports both:
+ *
+ *   <div data-role="header">
+ *
+ * and:
+ *
+ *   <div class="ui-header">
+ *
+ * The data-role attributes are purely visual here.
+ * They do NOT create pages, navigation, AJAX loading, etc.
+ */
+
+
+/* ================================================================
+   BASE
+   ================================================================ */
+
+html {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    min-width: 320px;
+
+    color: #333;
+
+    background: #f4f4f4;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    color: #2489ce;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+
+/* ================================================================
+   PAGE
+   ================================================================ */
+
+[data-role="page"],
+.ui-page {
+    position: relative;
+
+    display: block;
+
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    background: #f7f7f7;
+
+    color: #333;
+}
+
+
+/* ================================================================
+   HEADER
+   ================================================================ */
+
+[data-role="header"],
+.ui-header {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 44px;
+
+    margin: 0;
+    padding: 0 15px;
+
+    border: 1px solid #333;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #666 0%,
+            #444 50%,
+            #2b2b2b 100%
+        );
+
+    text-shadow:
+        0 -1px 0 #000;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 1px 3px rgba(0,0,0,.25);
+
+    z-index: 10;
+}
+
+
+/*
+ * jQM's header title.
+ *
+ * Supports:
+ *
+ * <h1>...</h1>
+ * <h1 class="ui-title">...</h1>
+ */
+
+[data-role="header"] h1,
+[data-role="header"] h2,
+.ui-header .ui-title {
+
+    display: block;
+
+    margin: 0;
+
+    min-height: 43px;
+
+    padding: 9px 45px;
+
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    line-height: 25px;
+
+    text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+
+[data-role="footer"],
+.ui-footer {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 44px;
+
+    margin: 0;
+    padding: 0;
+
+    border: 1px solid #333;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #555 0%,
+            #333 50%,
+            #222 100%
+        );
+
+    text-shadow:
+        0 -1px 0 #000;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 -1px 3px rgba(0,0,0,.2);
+
+    z-index: 10;
+}
+
+
+/* ================================================================
+   CONTENT
+   ================================================================ */
+
+.ui-content,
+[data-role="content"] {
+
+    display: block;
+
+    padding: 15px;
+
+    min-height: 1px;
+
+    background: #f7f7f7;
+
+    color: #333;
+}
+
+
+/* ================================================================
+   HEADINGS
+   ================================================================ */
+
+.ui-content h1,
+[data-role="content"] h1 {
+
+    margin: .6em 0;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    color: #333;
+}
+
+.ui-content h2,
+[data-role="content"] h2 {
+
+    margin: .7em 0;
+
+    font-size: 20px;
+}
+
+.ui-content h3,
+[data-role="content"] h3 {
+
+    margin: .8em 0;
+
+    font-size: 17px;
+}
+
+.ui-content p {
+    margin: 1em 0;
+}
+
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+
+[data-role="navbar"],
+.ui-navbar {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+}
+
+
+/*
+ * Remove the browser's normal list styling.
+ */
+
+[data-role="navbar"] ul,
+.ui-navbar ul {
+
+    display: flex;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+[data-role="navbar"] li,
+.ui-navbar li {
+
+    flex: 1 1 0;
+
+    width: 1%;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/*
+ * The classic jQM navbar buttons.
+ */
+
+[data-role="navbar"] a,
+.ui-navbar a {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 42px;
+
+    margin: 0;
+
+    padding: 11px 5px 10px;
+
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 1px solid #444;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #555 0%,
+            #333 50%,
+            #222 100%
+        );
+
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    line-height: 20px;
+
+    text-align: center;
+    text-decoration: none;
+
+    text-shadow:
+        0 -1px 0 #000;
+
+    box-shadow:
+        inset 1px 0 0 rgba(255,255,255,.08);
+}
+
+[data-role="navbar"] li:first-child a,
+.ui-navbar li:first-child a {
+    border-left: 0;
+}
+
+[data-role="navbar"] a:hover,
+.ui-navbar a:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #666,
+            #444,
+            #2d2d2d
+        );
+
+    color: #fff;
+}
+
+
+/*
+ * Active tab.
+ *
+ * You can simply add class="ui-btn-active"
+ * to the desired link.
+ */
+
+[data-role="navbar"] a.ui-btn-active,
+[data-role="navbar"] a.active,
+.ui-navbar a.ui-btn-active,
+.ui-navbar a.active {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #444 0%,
+            #222 100%
+        );
+
+    color: #fff;
+
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.35);
+}
+
+
+/* ================================================================
+   NAVBAR ICONS
+   ================================================================ */
+
+[data-role="navbar"] .ui-icon,
+.ui-navbar .ui-icon {
+
+    display: block;
+
+    margin: 0 auto 3px;
+}
+
+
+/* ================================================================
+   GENERIC BUTTON
+   ================================================================ */
+
+.ui-btn,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 40px;
+
+    margin: 0 0 8px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #bbb;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff 0%,
+            #f7f7f7 50%,
+            #e5e5e5 100%
+        );
+
+    color: #333;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    line-height: 20px;
+
+    text-align: center;
+    text-decoration: none;
+    text-shadow:
+        0 1px 0 #fff;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8),
+        0 1px 2px rgba(0,0,0,.15);
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/*
+ * Don't accidentally style navbar links as generic buttons.
+ */
+
+[data-role="navbar"] a,
+.ui-navbar a {
+    width: 100%;
+    margin: 0;
+}
+
+
+/* ================================================================
+   BUTTON STATES
+   ================================================================ */
+
+.ui-btn:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff,
+            #eee
+        );
+}
+
+.ui-btn:active,
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ddd,
+            #eee
+        );
+
+    box-shadow:
+        inset 0 2px 5px rgba(0,0,0,.18);
+}
+
+.ui-btn:focus-visible,
+button:focus-visible,
+input:focus-visible {
+
+    outline: 2px solid #38c;
+
+    outline-offset: 2px;
+}
+
+
+/* ================================================================
+   ACTIVE BUTTON
+   ================================================================ */
+
+.ui-btn-active {
+
+    border-color: #2373a5;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #5bc0ed 0%,
+            #38a8dd 45%,
+            #2588c5 100%
+        );
+
+    color: #fff;
+
+    text-shadow:
+        0 -1px 0 #17658f;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.3),
+        0 1px 2px rgba(0,0,0,.2);
+}
+
+
+/* ================================================================
+   INLINE BUTTON
+   ================================================================ */
+
+.ui-btn-inline {
+
+    display: inline-block;
+
+    width: auto;
+
+    vertical-align: middle;
+}
+
+
+/* ================================================================
+   MINI BUTTON
+   ================================================================ */
+
+.ui-mini {
+
+    min-height: 32px;
+
+    padding: 5px 10px;
+
+    font-size: 13px;
+
+    line-height: 20px;
+}
+
+
+/* ================================================================
+   HEADER BUTTONS
+   ================================================================ */
+
+[data-role="header"] > .ui-btn,
+.ui-header > .ui-btn {
+
+    position: absolute;
+
+    top: 5px;
+
+    width: auto;
+
+    min-width: 60px;
+
+    min-height: 34px;
+
+    margin: 0;
+
+    padding: 6px 10px;
+
+    font-size: 13px;
+}
+
+.ui-btn-left {
+    left: 5px;
+}
+
+.ui-btn-right {
+    right: 5px;
+}
+
+
+/* ================================================================
+   LISTVIEW
+   ================================================================ */
+
+.ui-listview {
+
+    display: block;
+
+    margin: 0 0 15px;
+
+    padding: 0;
+
+    list-style: none;
+
+    border: 1px solid #c8c8c8;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    box-shadow:
+        0 1px 2px rgba(0,0,0,.1);
+}
+
+.ui-listview > li {
+
+    position: relative;
+
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    border-bottom: 1px solid #ddd;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff,
+            #f1f1f1
+        );
+}
+
+.ui-listview > li:last-child {
+    border-bottom: 0;
+}
+
+
+/*
+ * Normal list links.
+ */
+
+.ui-listview > li > a {
+
+    position: relative;
+
+    display: block;
+
+    min-height: 44px;
+
+    margin: 0;
+
+    padding: 11px 40px 11px 15px;
+
+    color: #333;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+.ui-listview > li > a:hover {
+    background: rgba(0,0,0,.04);
+}
+
+.ui-listview > li > a:active {
+    background: #ddd;
+}
+
+
+/* ================================================================
+   LIST DIVIDERS
+   ================================================================ */
+
+.ui-listview .ui-li-divider {
+
+    min-height: 30px;
+
+    padding: 6px 15px;
+
+    border-bottom: 1px solid #aaa;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #e8e8e8,
+            #d3d3d3
+        );
+
+    color: #555;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+
+/* ================================================================
+   LIST HEADINGS / DESCRIPTIONS
+   ================================================================ */
+
+.ui-listview .ui-li-heading {
+
+    display: block;
+
+    margin: 0 0 3px;
+
+    color: #333;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ui-listview .ui-li-desc {
+
+    display: block;
+
+    margin: 0;
+
+    color: #777;
+
+    font-size: 13px;
+    font-weight: normal;
+
+    white-space: normal;
+}
+
+
+/* ================================================================
+   LIST ARROWS
+   ================================================================ */
+
+.ui-li-has-arrow > a {
+    padding-right: 50px;
+}
+
+.ui-li-has-arrow > a::after {
+
+    content: "›";
+
+    position: absolute;
+
+    top: 50%;
+    right: 10px;
+
+    width: 22px;
+    height: 22px;
+
+    margin-top: -11px;
+
+    border-radius: 50%;
+
+    background: #aaa;
+
+    color: #fff;
+
+    font-size: 24px;
+    font-weight: normal;
+
+    line-height: 19px;
+
+    text-align: center;
+
+    text-shadow: none;
+}
+
+
+/* ================================================================
+   FORMS
+   ================================================================ */
+
+.ui-field-contain {
+
+    margin: 0 0 15px;
+
+    padding: 0;
+}
+
+.ui-field-contain > label {
+
+    display: block;
+
+    margin: 0 0 6px;
+
+    color: #333;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* ================================================================
+   TEXT INPUT
+   ================================================================ */
+
+.ui-input-text {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0 0 10px;
+
+    padding: 0;
+
+    border: 1px solid #aaa;
+
+    border-radius: 5px;
+
+    background: #fff;
+
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.12);
+}
+
+.ui-input-text input,
+.ui-input-text textarea,
+input.ui-input-text,
+textarea.ui-input-text {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 9px 10px;
+
+    border: 0;
+
+    outline: 0;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #333;
+
+    line-height: 20px;
+
+    -webkit-appearance: none;
+}
+
+.ui-input-text textarea,
+textarea.ui-input-text {
+
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+.ui-input-text:focus-within {
+
+    border-color: #38c;
+
+    box-shadow:
+        0 0 3px rgba(56,153,204,.6),
+        inset 0 1px 3px rgba(0,0,0,.08);
+}
+
+
+/* ================================================================
+   SEARCH INPUT
+   ================================================================ */
+
+.ui-input-search {
+
+    position: relative;
+
+    display: block;
+
+    margin: 0 0 12px;
+
+    padding: 0;
+
+    border: 1px solid #aaa;
+
+    border-radius: 5px;
+
+    background: #fff;
+
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.12);
+}
+
+.ui-input-search::before {
+
+    content: "⌕";
+
+    position: absolute;
+
+    left: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #888;
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.ui-input-search input {
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 38px;
+
+    padding: 8px 10px 8px 34px;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+}
+
+
+/* ================================================================
+   SELECT
+   ================================================================ */
+
+.ui-select {
+
+    display: block;
+
+    width: 100%;
+
+    margin-bottom: 12px;
+}
+
+.ui-select select {
+
+    display: block;
+
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 8px 35px 8px 10px;
+
+    border: 1px solid #aaa;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff,
+            #e7e7e7
+        );
+
+    color: #333;
+
+    font-size: 16px;
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+/* ================================================================
+   CHECKBOX
+   ================================================================ */
+
+.ui-checkbox {
+
+    position: relative;
+
+    margin: 0 0 8px;
+}
+
+.ui-checkbox input {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.ui-checkbox label {
+
+    position: relative;
+
+    display: block;
+
+    min-height: 40px;
+
+    margin: 0;
+
+    padding: 9px 10px 9px 42px;
+
+    border: 1px solid #bbb;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff,
+            #e7e7e7
+        );
+
+    color: #333;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+.ui-checkbox label::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    top: 50%;
+
+    width: 22px;
+    height: 22px;
+
+    margin-top: -11px;
+
+    border: 1px solid #999;
+
+    border-radius: 4px;
+
+    background: #fff;
+
+    box-shadow:
+        inset 0 1px 2px rgba(0,0,0,.15);
+}
+
+.ui-checkbox input:checked + label::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    left: 13px;
+    top: 50%;
+
+    margin-top: -11px;
+
+    color: #2489ce;
+
+    font-size: 19px;
+    font-weight: bold;
+}
+
+
+/* ================================================================
+   RADIO
+   ================================================================ */
+
+.ui-radio {
+
+    position: relative;
+
+    margin: 0 0 8px;
+}
+
+.ui-radio input {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.ui-radio label {
+
+    position: relative;
+
+    display: block;
+
+    min-height: 40px;
+
+    margin: 0;
+
+    padding: 9px 10px 9px 42px;
+
+    border: 1px solid #bbb;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff,
+            #e7e7e7
+        );
+
+    color: #333;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.ui-radio label::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    top: 50%;
+
+    width: 22px;
+    height: 22px;
+
+    margin-top: -11px;
+
+    border: 1px solid #999;
+
+    border-radius: 50%;
+
+    background: #fff;
+}
+
+.ui-radio input:checked + label::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    width: 12px;
+    height: 12px;
+
+    margin-top: -6px;
+
+    border-radius: 50%;
+
+    background: #2489ce;
+}
+
+
+/* ================================================================
+   FLIP SWITCH
+   ================================================================ */
+
+.ui-flipswitch {
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 90px;
+    height: 34px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #aaa;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    background: #ddd;
+
+    vertical-align: middle;
+}
+
+.ui-flipswitch input {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.ui-flipswitch label {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    line-height: 32px;
+}
+
+.ui-flipswitch label::before {
+
+    content: "OFF";
+
+    position: absolute;
+
+    right: 9px;
+
+    color: #666;
+
+    font-weight: bold;
+}
+
+.ui-flipswitch label::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 2px;
+    left: 2px;
+
+    width: 30px;
+    height: 28px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            #fff,
+            #ddd
+        );
+
+    box-shadow:
+        0 1px 3px rgba(0,0,0,.35);
+
+    transition: left .15s ease;
+}
+
+.ui-flipswitch input:checked + label {
+
+    background: #38c;
+}
+
+.ui-flipswitch input:checked + label::before {
+
+    content: "ON";
+
+    left: 10px;
+    right: auto;
+
+    color: #fff;
+}
+
+.ui-flipswitch input:checked + label::after {
+
+    left: 56px;
+}
+
+
+/* ================================================================
+   SLIDER
+   ================================================================ */
+
+.ui-slider {
+
+    width: 100%;
+
+    margin: 10px 0 15px;
+}
+
+.ui-slider input[type="range"] {
+
+    display: block;
+
+    width: 100%;
+
+    height: 40px;
+
+    margin: 0;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: transparent;
+}
+
+.ui-slider input[type="range"]::-webkit-slider-runnable-track {
+
+    height: 8px;
+
+    border: 1px solid #aaa;
+
+    border-radius: 4px;
+
+    background: #ddd;
+}
+
+.ui-slider input[type="range"]::-webkit-slider-thumb {
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 28px;
+    height: 28px;
+
+    margin-top: -11px;
+
+    border: 1px solid #999;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            #fff,
+            #ddd
+        );
+
+    box-shadow:
+        0 1px 3px rgba(0,0,0,.35);
+}
+
+
+/* ================================================================
+   CONTROL GROUP / SEGMENTED BUTTONS
+   ================================================================ */
+
+.ui-controlgroup {
+
+    display: flex;
+
+    width: 100%;
+
+    margin-bottom: 15px;
+}
+
+.ui-controlgroup > .ui-btn {
+
+    flex: 1;
+
+    width: auto;
+
+    margin: 0;
+
+    border-radius: 0;
+
+    border-right-width: 0;
+}
+
+.ui-controlgroup > .ui-btn:first-child {
+
+    border-radius: 5px 0 0 5px;
+}
+
+.ui-controlgroup > .ui-btn:last-child {
+
+    border-right-width: 1px;
+
+    border-radius: 0 5px 5px 0;
+}
+
+
+/* ================================================================
+   COLLAPSIBLE
+   ================================================================ */
+
+.ui-collapsible {
+
+    margin-bottom: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    background: #fff;
+}
+
+.ui-collapsible-heading {
+
+    margin: 0;
+}
+
+.ui-collapsible-heading .ui-btn {
+
+    margin: 0;
+
+    border: 0;
+
+    border-radius: 0;
+
+    text-align: left;
+}
+
+.ui-collapsible-content {
+
+    padding: 15px;
+
+    border-top: 1px solid #ddd;
+
+    background: #fff;
+}
+
+
+/* ================================================================
+   BADGES
+   ================================================================ */
+
+.ui-badge {
+
+    display: inline-block;
+
+    min-width: 20px;
+
+    padding: 2px 6px;
+
+    border-radius: 10px;
+
+    background: #38c;
+
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    line-height: 16px;
+
+    text-align: center;
+
+    text-shadow: none;
+}
+
+
+/* ================================================================
+   CORNERS
+   ================================================================ */
+
+.ui-corner-all {
+    border-radius: 5px;
+}
+
+.ui-corner-top {
+    border-radius: 5px 5px 0 0;
+}
+
+.ui-corner-bottom {
+    border-radius: 0 0 5px 5px;
+}
+
+.ui-corner-left {
+    border-radius: 5px 0 0 5px;
+}
+
+.ui-corner-right {
+    border-radius: 0 5px 5px 0;
+}
+
+.ui-corner-none {
+    border-radius: 0;
+}
+
+
+/* ================================================================
+   SHADOW
+   ================================================================ */
+
+.ui-shadow {
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.25);
+}
+
+
+/* ================================================================
+   ICONS
+   ================================================================ */
+
+.ui-icon {
+
+    display: inline-block;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #555;
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    line-height: 18px;
+
+    text-align: center;
+
+    text-shadow: none;
+}
+
+.ui-icon-plus::before {
+    content: "+";
+}
+
+.ui-icon-minus::before {
+    content: "−";
+}
+
+.ui-icon-delete::before {
+    content: "×";
+}
+
+.ui-icon-check::before {
+    content: "✓";
+}
+
+.ui-icon-home::before {
+    content: "⌂";
+}
+
+.ui-icon-search::before {
+    content: "⌕";
+}
+
+.ui-icon-gear::before {
+    content: "⚙";
+}
+
+.ui-icon-info::before {
+    content: "i";
+}
+
+.ui-icon-arrow-r::before {
+    content: "›";
+}
+
+.ui-icon-arrow-l::before {
+    content: "‹";
+}
+
+.ui-icon-arrow-u::before {
+    content: "↑";
+}
+
+.ui-icon-arrow-d::before {
+    content: "↓";
+}
+
+
+/* ================================================================
+   TABLE
+   ================================================================ */
+
+.ui-table {
+
+    width: 100%;
+
+    margin-bottom: 15px;
+
+    border-collapse: collapse;
+
+    background: #fff;
+}
+
+.ui-table th,
+.ui-table td {
+
+    padding: 8px 10px;
+
+    border: 1px solid #ccc;
+
+    text-align: left;
+}
+
+.ui-table th {
+
+    background:
+        linear-gradient(
+            #eee,
+            #ddd
+        );
+
+    font-weight: bold;
+
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+
+/* ================================================================
+   NOTICE / MESSAGE
+   ================================================================ */
+
+.ui-notice {
+
+    margin: 0 0 15px;
+
+    padding: 12px 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    background: #eee;
+
+    color: #444;
+}
+
+.ui-notice-info {
+
+    border-color: #8fc5e8;
+
+    background: #d9edf7;
+
+    color: #31708f;
+}
+
+.ui-notice-success {
+
+    border-color: #b2dba1;
+
+    background: #dff0d8;
+
+    color: #3c763d;
+}
+
+.ui-notice-warning {
+
+    border-color: #e5c779;
+
+    background: #fcf8e3;
+
+    color: #8a6d3b;
+}
+
+.ui-notice-error {
+
+    border-color: #e4a0a0;
+
+    background: #f2dede;
+
+    color: #a94442;
+}
+
+
+/* ================================================================
+   DARK SWATCH
+   ================================================================ */
+
+.ui-body-d {
+
+    color: #fff;
+
+    background: #222;
+}
+
+.ui-body-d .ui-content {
+    background: #222;
+    color: #fff;
+}
+
+.ui-body-d h1,
+.ui-body-d h2,
+.ui-body-d h3 {
+    color: #fff;
+}
+
+
+/* ================================================================
+   RESPONSIVE FORM LAYOUT
+   ================================================================ */
+
+@media (min-width: 600px) {
+
+    .ui-field-contain {
+
+        display: grid;
+
+        grid-template-columns: 30% 70%;
+
+        align-items: center;
+    }
+
+    .ui-field-contain > label {
+
+        margin: 0;
+
+        padding-right: 15px;
+
+        text-align: right;
+    }
+
+}
+
+
+/* ================================================================
+   SMALL PHONE
+   ================================================================ */
+
+@media (max-width: 480px) {
+
+    .ui-content {
+        padding: 12px;
+    }
+
+    [data-role="header"] h1,
+    [data-role="header"] h2,
+    .ui-header .ui-title {
+
+        padding-left: 40px;
+        padding-right: 40px;
+
+        font-size: 17px;
+    }
+
+    [data-role="navbar"] a,
+    .ui-navbar a {
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* ================================================================
+   FOOTER NAVBAR SPECIAL CASE
+   ================================================================ */
+
+/*
+ * This is particularly important for your current HTML:
+ *
+ * <div data-role="footer">
+ *     <div data-role="tabs">
+ *         <div data-role="navbar">
+ *
+ * Make the footer itself contain the navbar naturally.
+ */
+
+[data-role="footer"] [data-role="tabs"],
+.ui-footer .ui-tabs {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+[data-role="footer"] [data-role="navbar"] {
+
+    width: 100%;
+}
+
+[data-role="footer"] [data-role="navbar"] ul {
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ================================================================
+   FIX JQM'S OLD CLEARFIX EXPECTATIONS
+   ================================================================ */
+
+[data-role="header"]::after,
+[data-role="footer"]::after,
+[data-role="navbar"]::after,
+.ui-header::after,
+.ui-footer::after,
+.ui-navbar::after {
+
+    content: "";
+
+    display: table;
+
+    clear: both;
+}
+
+
+/* ================================================================
+   DISABLED
+   ================================================================ */
+
+.ui-disabled,
+.ui-btn:disabled,
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+
+    opacity: .45;
+
+    pointer-events: none;
+}
+
+
+/* ================================================================
+   NO TEXT SELECTION ON UI ELEMENTS
+   ================================================================ */
+
+.ui-btn,
+.ui-navbar a,
+.ui-header,
+.ui-footer {
+
+    -webkit-user-select: none;
+    user-select: none;
+}

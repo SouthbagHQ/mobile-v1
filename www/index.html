@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        if (localStorage.getItem("uid") !== null) {
+            window.location.href = "home.html"
+        }
+    </script>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy"
+      content="default-src * data: blob: 'unsafe-inline' 'unsafe-eval';
+               connect-src * ws: wss:;
+               img-src * data: content: blob:;
+               style-src * 'unsafe-inline';
+               script-src * 'unsafe-inline' 'unsafe-eval';"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="width=375, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Southbag Mobile</title>
+    <link rel="stylesheet" href="css/jqlook.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+
+    <div data-role="page">
+
+        <div data-role="header">
+            <h1>Sign In</h1>
+            <!-- <button class="reload" onclick="window.location.reload()">reload</button> -->
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <center>
+                <h1>Sign In</h1>
+                <button class="ui-shadow ui-btn ui-corner-all" onclick="cAcct()">Create an Account</button>
+                <p>Southbag Mobile accounts are non transferrable and only work in this version of the app and on this
+                    device. Sorry, not sorry.</p>
+            </center>
+        </div><!-- /content -->
+
+
+    </div><!-- /page -->
+
+    <script src="https://localhost/cordova.js"></script>
+    <script src="js/globals.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,920 @@
+/* i vibed this */
+/*
+ * jqlook.css
+ * ---------------------------------------------------------------
+ * CSS-only recreation of the LIGHT jQuery Mobile 1.4.x aesthetic.
+ *
+ * No jQuery Mobile JS required.
+ * No AJAX navigation.
+ * No page enhancement.
+ * data-role attributes are only used as CSS selectors.
+ */
+
+/* ===============================================================
+   BASE
+   =============================================================== */
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+    background: #f7f7f7;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+}
+a {
+    color: #3388cc;
+}
+
+/* ===============================================================
+   PAGE
+   =============================================================== */
+[data-role="page"],
+.ui-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    color: #333;
+}
+
+/* ===============================================================
+   HEADER
+   =============================================================== */
+[data-role="header"],
+.ui-header {
+    position: relative;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 15px;
+    border: 1px solid #b6b6b6;
+    background:
+        linear-gradient(
+            #f6f6f6 0%,
+            #e5e5e5 50%,
+            #d6d6d6 100%
+        );
+    color: #333;
+    text-shadow:
+        0 1px 0 #fff;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8);
+    z-index: 10;
+}
+
+/* Header title */
+[data-role="header"] h1,
+[data-role="header"] h2,
+.ui-header .ui-title {
+    display: block;
+    min-height: 43px;
+    margin: 0;
+    padding: 9px 45px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+    text-align: center;
+    text-shadow:
+        0 1px 0 #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===============================================================
+   CONTENT
+   =============================================================== */
+.ui-content,
+[data-role="content"] {
+    display: block;
+    min-height: 1px;
+    padding: 15px;
+    background: #f7f7f7;
+    color: #333;
+}
+
+/* ===============================================================
+   FOOTER
+   =============================================================== */
+[data-role="footer"],
+.ui-footer {
+    position: relative;
+    min-height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #b6b6b6;
+    background:
+        linear-gradient(
+            #f6f6f6 0%,
+            #e5e5e5 50%,
+            #d6d6d6 100%
+        );
+    color: #333;
+    text-shadow:
+        0 1px 0 #fff;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* ===============================================================
+   HEADINGS
+   =============================================================== */
+.ui-content h1,
+[data-role="content"] h1 {
+    margin: .6em 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+.ui-content h2,
+[data-role="content"] h2 {
+    margin: .7em 0;
+    font-size: 20px;
+}
+.ui-content h3,
+[data-role="content"] h3 {
+    margin: .8em 0;
+    font-size: 17px;
+}
+
+/* ===============================================================
+   BUTTONS
+   =============================================================== */
+.ui-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    margin: 0 0 8px;
+    padding: 9px 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    background:
+        linear-gradient(
+            #fff 0%,
+            #fdfdfd 50%,
+            #eee 100%
+        );
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow:
+        0 1px 0 #fff;
+    cursor: pointer;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8),
+        0 1px 2px rgba(0,0,0,.12);
+    -webkit-appearance: none;
+    appearance: none;
+}
+.ui-btn:hover {
+    background:
+        linear-gradient(
+            #fff,
+            #f5f5f5
+        );
+    color: #222;
+}
+.ui-btn:active {
+    background:
+        linear-gradient(
+            #ddd,
+            #eee
+        );
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.12);
+}
+.ui-btn:focus-visible {
+    outline: 2px solid #38c;
+    outline-offset: 2px;
+}
+
+/* Active blue button */
+.ui-btn-active {
+    border-color: #2373a5;
+    background:
+        linear-gradient(
+            #6ac8f0 0%,
+            #4bb2e5 45%,
+            #2b8dcc 100%
+        );
+    color: #fff;
+    text-shadow:
+        0 -1px 0 #17658f;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.3),
+        0 1px 2px rgba(0,0,0,.18);
+}
+.ui-btn-active:hover {
+    background:
+        linear-gradient(
+            #79cef2,
+            #369ed6
+        );
+    color: #fff;
+}
+
+/* Inline */
+.ui-btn-inline {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+/* Mini */
+.ui-mini {
+    min-height: 30px;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+/* Disabled */
+.ui-disabled,
+.ui-btn:disabled {
+    opacity: .45;
+    pointer-events: none;
+}
+
+/* ===============================================================
+   HEADER BUTTONS
+   =============================================================== */
+[data-role="header"] > .ui-btn,
+.ui-header > .ui-btn {
+    position: absolute;
+    top: 5px;
+    width: auto;
+    min-height: 32px;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+.ui-btn-left {
+    left: 5px;
+}
+.ui-btn-right {
+    right: 5px;
+}
+
+/* ===============================================================
+   NAVBAR / TABS
+   =============================================================== */
+[data-role="navbar"],
+.ui-navbar {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+[data-role="navbar"] ul,
+.ui-navbar ul {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+[data-role="navbar"] li,
+.ui-navbar li {
+    flex: 1 1 0;
+    width: 1%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*
+ * Light jQM navbar.
+ */
+[data-role="navbar"] a,
+.ui-navbar a {
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    margin: 0;
+    padding: 9px 5px;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    background:
+        linear-gradient(
+            #fdfdfd,
+            #e7e7e7
+        );
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow:
+        0 1px 0 #fff;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.8);
+}
+[data-role="navbar"] li:first-child a,
+.ui-navbar li:first-child a {
+    border-radius: 5px 0 0 5px;
+}
+[data-role="navbar"] li:last-child a,
+.ui-navbar li:last-child a {
+    border-right: 1px solid #aaa;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Active tab */
+[data-role="navbar"] a.ui-btn-active,
+[data-role="navbar"] a.active,
+.ui-navbar a.ui-btn-active,
+.ui-navbar a.active {
+    border-color: #2373a5;
+    background:
+        linear-gradient(
+            #62bde9,
+            #3b9fd2
+        );
+    color: #fff;
+    text-shadow:
+        0 -1px 0 #17658f;
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.12);
+}
+
+/* ===============================================================
+   FOOTER NAVBAR
+   =============================================================== */
+[data-role="footer"] [data-role="navbar"] {
+    width: 100%;
+    padding: 5px;
+}
+[data-role="footer"] [data-role="navbar"] ul {
+    width: 100%;
+}
+[data-role="footer"] [data-role="navbar"] a {
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+/* ===============================================================
+   LISTVIEW
+   =============================================================== */
+.ui-listview {
+    margin: 0 0 15px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    list-style: none;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,.08);
+}
+.ui-listview > li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+    background:
+        linear-gradient(
+            #fff,
+            #f4f4f4
+        );
+}
+.ui-listview > li:last-child {
+    border-bottom: 0;
+}
+
+/* List links */
+.ui-listview > li > a {
+    position: relative;
+    display: block;
+    min-height: 44px;
+    margin: 0;
+    padding: 11px 40px 11px 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 21px;
+    text-decoration: none;
+    text-shadow:
+        0 1px 0 #fff;
+}
+.ui-listview > li > a:hover {
+    background: #eee;
+}
+.ui-listview > li > a:active {
+    background: #ddd;
+}
+
+/* Inset list */
+.ui-listview-inset {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* ===============================================================
+   LIST DIVIDERS
+   =============================================================== */
+.ui-li-divider {
+    padding: 6px 15px !important;
+    min-height: 30px;
+    border-bottom: 1px solid #aaa !important;
+    background:
+        linear-gradient(
+            #e5e5e5,
+            #d2d2d2
+        ) !important;
+    color: #555;
+    font-size: 13px !important;
+    font-weight: bold;
+    line-height: 17px;
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+/* ===============================================================
+   LIST SUBTEXT
+   =============================================================== */
+.ui-li-heading {
+    display: block;
+    margin: 0 0 3px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+.ui-li-desc {
+    display: block;
+    margin: 0;
+    color: #777;
+    font-size: 13px;
+    font-weight: normal;
+    white-space: normal;
+}
+
+/* ===============================================================
+   LIST ARROWS
+   =============================================================== */
+.ui-li-has-arrow > a {
+    padding-right: 50px !important;
+}
+.ui-li-has-arrow > a::after {
+    content: "›";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    margin-top: -11px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            #eee,
+            #ccc
+        );
+    color: #666;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 19px;
+    text-align: center;
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+/* ===============================================================
+   BADGE / COUNT
+   =============================================================== */
+.ui-li-count,
+.ui-badge {
+    display: inline-block;
+    min-width: 20px;
+    padding: 2px 6px;
+    border: 1px solid #bbb;
+    border-radius: 12px;
+    background:
+        linear-gradient(
+            #eee,
+            #ddd
+        );
+    color: #333;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 16px;
+    text-align: center;
+    text-shadow:
+        0 1px 0 #fff;
+}
+.ui-li-count {
+    position: absolute;
+    top: 50%;
+    right: 35px;
+    transform: translateY(-50%);
+}
+
+/* ===============================================================
+   FORM FIELD CONTAINERS
+   =============================================================== */
+.ui-field-contain {
+    margin: 0 0 15px;
+    padding: 0;
+}
+.ui-field-contain > label {
+    display: block;
+    margin: 0 0 6px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* ===============================================================
+   TEXT INPUTS
+   =============================================================== */
+.ui-input-text {
+    display: block;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #fff;
+    color:#000;
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.12);
+}
+.ui-input-text input,
+.ui-input-text textarea {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 9px 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #333;
+    line-height: 20px;
+    -webkit-appearance: none;
+}
+.ui-input-text textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.ui-input-text:focus-within {
+    border-color: #38c;
+    box-shadow:
+        0 0 3px rgba(56,153,204,.55),
+        inset 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* ===============================================================
+   SEARCH
+   =============================================================== */
+.ui-input-search {
+    position: relative;
+    margin-bottom: 12px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.12);
+}
+.ui-input-search::before {
+    content: "⌕";
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 2;
+}
+.ui-input-search input {
+    display: block;
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 10px 8px 32px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+
+/* ===============================================================
+   SELECT
+   =============================================================== */
+.ui-select {
+    margin-bottom: 12px;
+}
+.ui-select select {
+    display: block;
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 35px 8px 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background:
+        linear-gradient(
+            #fff,
+            #e7e7e7
+        );
+    color: #333;
+    font-size: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* ===============================================================
+   CHECKBOX
+   =============================================================== */
+.ui-checkbox {
+    position: relative;
+    margin-bottom: 8px;
+}
+.ui-checkbox input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.ui-checkbox label {
+    position: relative;
+    display: block;
+    min-height: 40px;
+    margin: 0;
+    padding: 9px 10px 9px 42px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    background:
+        linear-gradient(
+            #fff,
+            #e7e7e7
+        );
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow:
+        0 1px 0 #fff;
+}
+.ui-checkbox label::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    margin-top: -11px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    background: #fff;
+}
+.ui-checkbox input:checked + label::after {
+    content: "✓";
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    margin-top: -11px;
+    color: #2489ce;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/* ===============================================================
+   RADIO
+   =============================================================== */
+.ui-radio {
+    position: relative;
+    margin-bottom: 8px;
+}
+.ui-radio input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.ui-radio label {
+    position: relative;
+    display: block;
+    min-height: 40px;
+    margin: 0;
+    padding: 9px 10px 9px 42px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    background:
+        linear-gradient(
+            #fff,
+            #e7e7e7
+        );
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+.ui-radio label::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    margin-top: -11px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    background: #fff;
+}
+.ui-radio input:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: #2489ce;
+}
+
+/* ===============================================================
+   SLIDER
+   =============================================================== */
+.ui-slider {
+    width: 100%;
+    margin: 10px 0 15px;
+}
+.ui-slider input[type="range"] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+}
+.ui-slider input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background: #ddd;
+    box-shadow:
+        inset 0 1px 2px rgba(0,0,0,.15);
+}
+.ui-slider input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    margin-top: -11px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            #fff,
+            #ddd
+        );
+    box-shadow:
+        0 1px 3px rgba(0,0,0,.25);
+}
+
+/* ===============================================================
+   COLLAPSIBLE
+   =============================================================== */
+.ui-collapsible {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+}
+.ui-collapsible-heading {
+    margin: 0;
+}
+.ui-collapsible-heading .ui-btn {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    text-align: left;
+}
+.ui-collapsible-content {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+}
+
+/* ===============================================================
+   TABLE
+   =============================================================== */
+.ui-table {
+    width: 100%;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+    background: #fff;
+}
+.ui-table th,
+.ui-table td {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+.ui-table th {
+    background:
+        linear-gradient(
+            #eee,
+            #ddd
+        );
+    font-weight: bold;
+    text-shadow:
+        0 1px 0 #fff;
+}
+
+/* ===============================================================
+   CONTROL GROUP / SEGMENTED BUTTONS
+   =============================================================== */
+.ui-controlgroup {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.ui-controlgroup .ui-btn {
+    flex: 1;
+    width: auto;
+    margin: 0;
+    border-radius: 0;
+    border-right-width: 0;
+}
+.ui-controlgroup .ui-btn:first-child {
+    border-radius: 5px 0 0 5px;
+}
+.ui-controlgroup .ui-btn:last-child {
+    border-right-width: 1px;
+    border-radius: 0 5px 5px 0;
+}
+
+/* ===============================================================
+   CORNERS / SHADOW
+   =============================================================== */
+.ui-corner-all {
+    border-radius: 5px;
+}
+.ui-corner-top {
+    border-radius: 5px 5px 0 0;
+}
+.ui-corner-bottom {
+    border-radius: 0 0 5px 5px;
+}
+.ui-shadow {
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.2);
+}
+
+/* ===============================================================
+   RESPONSIVE FORM LAYOUT
+   =============================================================== */
+@media (min-width: 600px) {
+    .ui-field-contain {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        align-items: center;
+    }
+    .ui-field-contain > label {
+        margin: 0;
+        padding-right: 15px;
+        text-align: right;
+    }
+}
+
+/* ===============================================================
+   MOBILE
+   =============================================================== */
+@media (max-width: 480px) {
+    .ui-content {
+        padding: 12px;
+    }
+    [data-role="header"] h1,
+    [data-role="header"] h2,
+    .ui-header .ui-title {
+        font-size: 18px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    [data-role="navbar"] a,
+    .ui-navbar a {
+        font-size: 11px;
+    }
+}

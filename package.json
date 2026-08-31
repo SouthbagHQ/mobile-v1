@@ -1,0 +1,31 @@
+{
+  "name": "cc.southbag",
+  "displayName": "Southbag Mobile",
+  "version": "1.0.0",
+  "description": "Southbag Mobile, this is version One",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Lily",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-android": "^15.1.0",
+    "cordova-browser": "^7.0.0",
+    "cordova-plugin-inappbrowser": "^7.0.0",
+    "cordova-plugin-splashscreen": "^6.0.1"
+  },
+  "cordova": {
+    "platforms": [
+      "browser",
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-splashscreen": {}
+    }
+  }
+}

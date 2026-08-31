@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="cc.southbag.mobile" version="1.0.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Southbag</name>
+    <description>
+        Southbaggin it
+    </description>
+    <author email="lily@sometgirl.onlie" href="https://sometgirl.online">
+        Lily
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <application android:usesCleartextTraffic="true" />
+    </edit-config>
+    <!-- Allow the webview to navigate anywhere within your dev server -->
+<allow-navigation href="*" />
+<platform name="android">
+    <preference
+        name="AndroidWindowSplashScreenAnimatedIcon"
+        value="res/splash.png" />
+
+    <preference
+        name="SplashScreenBackgroundColor"
+        value="#8686ff" />
+</platform>
+
+<platform name="ios">
+    <splash src="res/splash.png" />
+</platform>
+<preference name="SplashScreenDelay" value="2000" />
+<preference name="AutoHideSplashScreen" value="true" />
+<preference name="FadeSplashScreen" value="false" />
+<preference name="SplashScreenBackgroundColor" value="#8686ff" />
+<platform name="android">
+    <icon src="res/icon.png" />
+</platform>
+
+<platform name="ios">
+    <icon src="res/icon.png" />
+</platform>
+</widget>

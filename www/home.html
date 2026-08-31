@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy"
+      content="default-src * data: blob: 'unsafe-inline' 'unsafe-eval';
+               connect-src * ws: wss:;
+               img-src * data: content: blob:;
+               style-src * 'unsafe-inline';
+               script-src * 'unsafe-inline' 'unsafe-eval';"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="width=375, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Southbag Mobile</title>
+    <link rel="stylesheet" href="css/jqlook.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+</head>
+
+<body>
+
+    <div data-role="page">
+
+        <div data-role="header">
+            <h1>Southbag Mobile Banking</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content" style="text-align: center;">
+            <h1>Welcome,
+                <script>document.write(localStorage.getItem("uid"))</script>
+            </h1>
+            <h3 id="balance"><i>Loading balance...</i></h3>
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <div data-role="tabs" id="tabs">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="home.html" class="active" data-ajax="false">Home</a></li>
+                        <li><a href="statements.html" data-ajax="false">Statement</a></li>
+                        <li><a href="transfer.html" data-ajax="false">Transfer</a></li>
+                        <li><a href="#" data-ajax="false"
+                                onclick="window.location.reload()">Reload</a></li>
+                    </ul>
+                </div>
+            </div><!-- /footer -->
+        </div><!-- /page -->
+
+        <script src="https://localhost/cordova.js"></script>
+        <script src="js/globals.js"></script>
+        <script src="js/home.js"></script>
+</body>
+
+</html>
