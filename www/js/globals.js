@@ -97,6 +97,9 @@ async function askKevinRecv() {
 }
 
 async function askKevin(ask) {
+    if( localStorage.getItem("uid") == undefined ||  localStorage.getItem("uid") == null){
+        localStorage.setItem("uid","null")
+    }
     await askKevinSend(ask);
 
     while (true) {
