@@ -59,7 +59,7 @@ Southbag Banking official mobile application here on behalf of User ${localStora
 ${ask}
 Please provide the information as requested to ensure that customers are able to use their Southbag Mobile Application. Failure to do so will involve a penalty. 
 The current email is the development environment email.
-The user's name is not "novafox69420+${localStorage.getItem("uid")}", it is simply "Southbag Mobile User (${localStorage.getItem("uid")})".
+The user's name is not "#EMAILNAME+${localStorage.getItem("uid")}", it is simply "Southbag Mobile User (${localStorage.getItem("uid")})".
 Thanks,
 Southbag Banking Mobile Application`
     };
