@@ -186,10 +186,11 @@ if (isIOS) {
     try {
         if (window.navigator && window.navigator.app && typeof window.navigator.app.exitApp === 'function') {
             window.navigator.app.exitApp();
-            return;
+        }
+        else {
+            window.close();
         }
 
-        window.close();
         setTimeout(() => {
             if (!window.closed) {
                 window.location.href = "about:blank";
@@ -200,4 +201,3 @@ if (isIOS) {
         window.location.href = "about:blank";
     }
 }
-    }
