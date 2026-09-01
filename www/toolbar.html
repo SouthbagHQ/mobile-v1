@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toolbar</title>
+    <link rel="stylesheet" href="css/jqlook-rtr.css">
+    <script src="js/globals.js"></script>
+</head>
+
+<body>
+
+    <div data-role="footer">
+        <div data-role="tabs" id="tabs">
+            <div data-role="navbar">
+                <ul>
+                    <li><a target="_top" href="home/index.html" data-ajax="false">Home</a></li>
+                    <li><a target="_top" href="statements/index.html" data-ajax="false">Statement</a></li>
+                    <li><a target="_top" href="transfer/index.html" data-ajax="false">Transfer</a></li>
+                    <li><a target="_top" href="support/index.html" data-ajax="false">Support</a></li>
+                    <li><a target="_top" href="javascript:window.location.reload()" data-ajax="false">Reload</a></li>
+                </ul>
+            </div>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+    <script>
+        document.querySelector(`[href="${parent.location.pathname.replace("/"+location.pathname.split("/")[1],"").split("/")[1]}/index.html"]`).classList.add("active")
+    </script>
+</body>
+
+
+</html>

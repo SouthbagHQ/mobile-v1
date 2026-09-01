@@ -13,6 +13,3 @@ ${f.MSG}`
         })
 
     })
-    .catch(err => {
-        document.querySelector(".ui-content").innerHTML = "askKevin failed:" + err
-    });

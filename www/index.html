@@ -2,9 +2,10 @@
 <html>
 
 <head>
+    <script>if(window.location.pathname.endsWith("/")) window.location.pathname += "index.html";</script>
     <script>
         if (localStorage.getItem("uid") !== null) {
-            window.location.href = "home.html"
+            window.location.href = "home/index.html"
         }
     </script>
     <meta charset="utf-8">
@@ -25,7 +26,6 @@
     <link rel="stylesheet" href="css/index.css">
     <title>Southbag Mobile</title>
     <link rel="stylesheet" href="css/jqlook.css" />
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -45,12 +45,12 @@
                     device. Sorry, not sorry.</p>
             </center>
         </div><!-- /content -->
-
+        <div data-role="footer" style="text-align: center;"><h4>Southbag, Inc. Solutions made for you<br>&copy; 0000</h4></div>
 
     </div><!-- /page -->
 
     <script src="js/globals.js"></script>
-    <script src="cordova.js"></script>
+    <script src="/cordova.js"></script>
 
 </body>
 

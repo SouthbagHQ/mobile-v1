@@ -17,7 +17,4 @@ ${f.MSG}`
         uic.innerHTML+=`<hr><br><a href="transfer.html"><h1>&lt;&lt; Back</h1></a>`
 
     })
-    .catch(err => {
-        document.querySelector(".ui-content").innerHTML = "askKevin failed:" + err
-    });
 }

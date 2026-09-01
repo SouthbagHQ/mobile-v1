@@ -11,6 +11,35 @@ html {
     background-size: 120px 120px;
 }
 
+@keyframes zoomInDown {
+    0% {
+        -webkit-animation-timing-function: cubic-bezier(.55, .055, .675, .19);
+        animation-timing-function: cubic-bezier(.55, .055, .675, .19);
+        opacity: 0;
+        -webkit-transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
+        transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0)
+    }
+
+    60% {
+        -webkit-animation-timing-function: cubic-bezier(.175, .885, .32, 1);
+        animation-timing-function: cubic-bezier(.175, .885, .32, 1);
+        opacity: 1;
+        -webkit-transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
+        transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0)
+    }
+}
+
+body {
+    -webkit-animation-name: zoomInDown;
+    animation-name: zoomInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 body {
     -webkit-touch-callout: none;
     -webkit-text-size-adjust: none;
@@ -22,7 +51,7 @@ body {
     text-size-adjust: none;
     text-transform: uppercase;
     user-select: none;
-    
+
     /* Strict dimensions */
     width: 375px !important;
     height: 667px !important;
@@ -30,12 +59,14 @@ body {
     max-height: 667px !important;
     position: relative;
     overflow: hidden;
-    background-color: #fff; /* App background color */
+    background-color: #fff;
+    /* App background color */
     box-shadow: #fff 0px 0px 5px;
 }
-body::after{
-    content:"";
-    display:block;
+
+body::after {
+    content: "";
+    display: block;
 }
 
 /* Force jQuery Mobile page containers */
@@ -44,7 +75,8 @@ body::after{
     height: 667px !important;
     max-width: 375px !important;
     max-height: 667px !important;
-    min-height: 667px !important; /* Overrides jQuery Mobile script-injected min-height */
+    min-height: 667px !important;
+    /* Overrides jQuery Mobile script-injected min-height */
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -65,7 +97,7 @@ body::after{
 [role="main"],
 .ui-content {
     flex-grow: 1;
-    overflow-y: auto; 
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
     width: 100% !important;
@@ -80,17 +112,97 @@ body::after{
     flex-shrink: 0;
     box-sizing: border-box;
 }
-*{
+
+* {
     text-transform: none !important;
 }
 
-.ui-header .ui-title{
+.ui-header .ui-title {
     margin: 0 0 !important;
 }
+
 .fee-field {
-    background:skyblue;
-    border-radius:100px;
-    width:fit-content;
-    margin-left:auto;
-    margin-right:auto;
+    background: skyblue;
+    border-radius: 100px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tb-frame {
+    width: 100%;
+    /* Fill parent width */
+    border: none;
+    /* Remove ugly default borders */
+    overflow: hidden;
+    /* Hide scrollbars once it fits perfectly */
+}
+
+.message-input {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+    padding-top: 20px;
+    * {
+        height: 100%;
+    }
+}
+
+.message-input input {
+    grid-column: span 2 / span 2;
+    text-wrap-mode: wrap;
+}
+
+.msgs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-x: scroll;
+    overflow-y: auto;
+    margin: -15px;
+    padding: 15px;
+}
+
+.kevin-message {
+    text-align: left !important;
+    margin-right: auto;
+}
+
+.user-message {
+    margin-left: auto;
+    text-align: right !important;
+}
+
+.msgs>div {
+    border-radius: 10px;
+    background-color: #FFF;
+    box-shadow: #62bde9 0px 0px 3px;
+    display: block;
+    width: fit-content;
+    padding: 10px;
+
+}
+
+.kevin-message::before {
+    content: "KEVIN";
+    font-weight: bold;
+    color: #000;
+    opacity: 0.5;
+    display: block;
+    font-size: 0.7em;
+}
+
+.user-message::before {
+    content: "YOU";
+    font-weight: bold;
+    color: #000;
+    opacity: 0.5;
+    display: block;
+    font-size: 0.7em;
+}
+.fee-field-in-msg {
+    font-size: 0.6em;
+    opacity: 0.8;
+    margin-top: 5px;
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="anim">
+
+<head>
+    <script>if (window.location.pathname.endsWith("/")) window.location.pathname += "index.html";</script>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy"
+      content="default-src * data: blob: 'unsafe-inline' 'unsafe-eval';
+               connect-src * ws: wss:;
+               img-src * data: content: blob:;
+               style-src * 'unsafe-inline';
+               script-src * 'unsafe-inline' 'unsafe-eval';"> -->
+    <link rel="shortcut icon" href="../img/logo.png" type="image/png">
+    <link rel="favicon" href="../img/logo.png" type="image/png">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="width=375, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Southbag Mobile</title>
+    <link rel="stylesheet" href="../css/jqlook-rtr.css" />
+</head>
+
+<body>
+
+    <div data-role="page">
+
+        <div data-role="header">
+            <h1>Southbag Mobile Banking</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content" style="text-align: center;display: flex;flex-direction: column;">
+            <div class="msgs" style="flex-grow: 1;">
+
+            </div>
+            <div class="message-input" style="flex-grow: 0;flex-shrink: 0;"><input class="ui-input-text" type="text"
+                    id="message" placeholder="Speak to our profesional customer support humans"><button onclick="send(this)"
+                    class="ui-btn">Send</button></div>
+        </div><!-- /content -->
+
+        <iframe class="tb-frame" src="../toolbar.html" onload="fitFrameHeight(this)" frameborder="0"></iframe>
+
+
+        <script src="../js/globals.js"></script>
+        <script src="../js/support.js"></script>
+        <script src="/cordova.js"></script>
+</body>
+
+</html>
