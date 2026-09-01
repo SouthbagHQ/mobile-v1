@@ -4,7 +4,7 @@ askKevin("Please provide the users balance as a number.")
         console.log(resp);
         keywords = ["balance", "briefcase"]
         msg = resp?.message.split("\n")
-        if (msg[0].includes(localStorage.getItem("uid"))) {
+        if (msg[0].includes(localStorage.getItem("v1-uid"))) {
             msg[0] = ""
         }
         msg = msg.join("\n")
