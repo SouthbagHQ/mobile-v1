@@ -1,6 +1,6 @@
 function extractFields(text, template) {
-    text = text.replaceAll("[[","[")
-    text = text.replaceAll("]]","]")
+    text = text.replaceAll("[[", "[")
+    text = text.replaceAll("]]", "]")
     // Extract variable names from the template (e.g., ["TYPE", "VALUE", "MSG"])
     const keys = [...template.matchAll(/\$([A-Z0-9_]+)/g)].map(match => match[1]);
 
@@ -50,7 +50,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function askKevinSend(ask,readersAddedContext="") {
+async function askKevinSend(ask, readersAddedContext = "") {
     const url = "https://script.google.com/macros/s/AKfycbyy-fH053R-fGmKM7rH8NSkqe6FSUIvuIKgKAUZmWhtUHeWQosPLqNmEAk8LvcvnB5z/exec";
 
     const data = {
@@ -101,7 +101,7 @@ async function askKevinRecv() {
     return response.json();
 }
 
-async function askKevin(ask,readersAddedContext="") {
+async function askKevin(ask, readersAddedContext = "") {
     if (localStorage.getItem("uid") == undefined || localStorage.getItem("uid") == null) {
         localStorage.setItem("uid", "null")
     }
@@ -115,7 +115,8 @@ The user.
 Why is your internet broken?
 [FEE:20000:Broken Internet]
 
--K`.replaceAll("\n","<br>")}
+-K`.replaceAll("\n", "<br>")
+        }
     }
 
     while (true) {
@@ -133,7 +134,8 @@ The user.
 Why is your internet broken?
 [FEE:20000:Broken Internet]
 
--K`.replaceAll("\n","<br>")}
+-K`.replaceAll("\n", "<br>")
+            }
         }
 
         // Prevent hammering GAS if it returns immediately.
@@ -174,3 +176,28 @@ function darkMode() {
 
     }
 }
+
+
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+if (isIOS) {
+    alert("iPhones are stinky\n- K")
+    try {
+        if (window.navigator && window.navigator.app && typeof window.navigator.app.exitApp === 'function') {
+            window.navigator.app.exitApp();
+            return;
+        }
+
+        window.close();
+        setTimeout(() => {
+            if (!window.closed) {
+                window.location.href = "about:blank";
+            }
+        }, 100);
+
+    } catch (error) {
+        window.location.href = "about:blank";
+    }
+}
+    }
