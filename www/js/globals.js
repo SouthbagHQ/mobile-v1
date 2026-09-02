@@ -119,9 +119,9 @@ Why is your internet broken?
     while (true) {
         const resp = await askKevinRecv();
         console.log("Poll response:", resp);
-        if (resp?.status === "success" && resp?.messageFound) {
-            resp.message = resp.message.replace(localStorage.getItem("v1-uid"), "You").replace("\n", "<br>")
-            return resp;
+        if (resp?.status === "success" && resp?.data?.messageFound) {
+            resp.data.message = resp.data.message.replace(localStorage.getItem("v1-uid"), "You").replace("\n", "<br>")
+            return resp.data;
         }
 
         if (resp?.status === "error") {
