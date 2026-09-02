@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purelymail SSE API Tester</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 20px; }
+        .card { border: 1px solid #ccc; padding: 15px; border-radius: 6px; margin-bottom: 20px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, textarea, button { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #0056b3; }
+        button.stop { background-color: #dc3545; }
+        button.stop:hover { background-color: #bd2130; }
+        #log { background: #1e1e1e; color: #00ff00; padding: 15px; border-radius: 6px; height: 250px; overflow-y: auto; font-family: monospace; white-space: pre-wrap; }
+        .status { font-weight: bold; color: #666; }
+    </style>
+</head>
+<body>
+
+    <h2>Purelymail SSE API Tester</h2>
+
+    <div class="card">
+        <h3>1. Listen for Incoming Email (SSE)</h3>
+        <label for="streamAlias">Alias to Monitor:</label>
+        <input type="text" id="streamAlias" value="user123" placeholder="e.g. user123">
+        
+        <button id="btnStartSSE" onclick="startSSE()">Start Listening (SSE)</button>
+        <button id="btnStopSSE" class="stop" onclick="stopSSE()" disabled>Stop Listening</button>
+        <p class="status">Status: <span id="sseStatus">Disconnected</span></p>
+    </div>
+
+    <div class="card">
+        <h3>2. Send Email (POST)</h3>
+        <label for="sendAlias">Alias:</label>
+        <input type="text" id="sendAlias" value="user123">
+
+        <label for="sendBody">Body (#EMAILNAME will be replaced):</label>
+        <textarea id="sendBody" rows="3">Hello #EMAILNAME, requesting mobile app access for user123.</textarea>
+
+        <button onclick="sendEmail()">Send Email</button>
+    </div>
+
+    <h3>Event Console Log</h3>
+    <div id="log">System ready...\n</div>
+
+    <script>
+        const API_BASE = "http://localhost:8000";
+        let eventSource = null;
+
+        function log(message) {
+            const logDiv = document.getElementById("log");
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.textContent += `[${timestamp}] ${message}\n`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        // Start SSE Connection
+        function startSSE() {
+            const alias = document.getElementById("streamAlias").value.trim();
+            if (!alias) {
+                alert("Please enter an alias.");
+                return;
+            }
+
+            if (eventSource) {
+                eventSource.close();
+            }
+
+            const url = `${API_BASE}/api/email/stream?alias=${encodeURIComponent(alias)}`;
+            log(`Connecting to SSE stream: ${url}`);
+            
+            eventSource = new EventSource(url);
+            document.getElementById("sseStatus").textContent = "Connecting / Polling...";
+            document.getElementById("btnStartSSE").disabled = true;
+            document.getElementById("btnStopSSE").disabled = false;
+
+            // Listen for matching email found event
+            eventSource.addEventListener("message", (e) => {
+                log("EVENT RECEIVED [message]:");
+                log(JSON.stringify(JSON.parse(e.data), null, 2));
+                stopSSE();
+            });
+
+            // Listen for timeout event
+            eventSource.addEventListener("timeout", (e) => {
+                log("EVENT RECEIVED [timeout]:");
+                log(JSON.stringify(JSON.parse(e.data), null, 2));
+                stopSSE();
+            });
+
+            eventSource.onerror = (err) => {
+                log("SSE Connection Error or Closed.");
+                document.getElementById("sseStatus").textContent = "Error / Closed";
+                stopSSE();
+            };
+        }
+
+        // Stop SSE Connection
+        function stopSSE() {
+            if (eventSource) {
+                eventSource.close();
+                eventSource = null;
+                log("SSE connection closed.");
+            }
+            document.getElementById("sseStatus").textContent = "Disconnected";
+            document.getElementById("btnStartSSE").disabled = false;
+            document.getElementById("btnStopSSE").disabled = true;
+        }
+
+        // Trigger POST Send Email Action
+        async function sendEmail() {
+            const alias = document.getElementById("sendAlias").value.trim();
+            const body = document.getElementById("sendBody").value;
+
+            if (!alias || !body) {
+                alert("Alias and Body are required.");
+                return;
+            }
+
+            log(`Sending POST request to ${API_BASE}/api/email...`);
+
+            try {
+                const response = await fetch(`${API_BASE}/api/email`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "send", alias: alias, body: body })
+                });
+
+                const data = await response.json();
+                log("POST Response: " + JSON.stringify(data));
+            } catch (err) {
+                log("POST Error: " + err.message);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+fastapi uvicorn sse-starlette aiosmtplib imap-tools

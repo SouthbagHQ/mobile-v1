@@ -24,8 +24,12 @@ This could work on iOS but it is android only because Kevin said so.
 _Solutions made for you._
 
 # AI usage
-Only used to make the UI kit (I forgot about this earlier sorry!)
+
+used to make the UI kit (I forgot about this earlier sorry!) and also the mailserver + tester (server was previously a Vibecoded google app script, ported it to python with the help of Gemini, i did not feel like doing that myself loll)
 
 ---
 
 https://lore.southbag.cc/
+
+
+
