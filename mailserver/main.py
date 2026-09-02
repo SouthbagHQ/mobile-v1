@@ -4,13 +4,12 @@ import os
 from datetime import datetime
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
-from sse_starlette.sse import EventSourceResponse
 import aiosmtplib
 from email.message import EmailMessage
 from imap_tools import MailBox, AND
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="Purelymail SSE API")
+app = FastAPI(title="Purelymail Long Poll API")
 
 # Enable CORS for local testing
 app.add_middleware(
@@ -96,7 +95,7 @@ def check_and_trash_email(alias: str):
     return None
 
 
-@app.post("/api/email")
+@app.post("/")
 async def handle_post(request: Request):
     try:
         data = await request.json()
@@ -107,48 +106,30 @@ async def handle_post(request: Request):
             body = data.get("body")
             if not alias or not body:
                 raise HTTPException(status_code=400, detail="Missing required parameters: 'alias' and 'body'")
-            
+
             result = await send_email(alias, body)
             return JSONResponse({"status": "success", "data": result})
+
+        elif action == "poll":
+            alias = data.get("alias")
+            if not alias:
+                raise HTTPException(status_code=400, detail="Missing required parameter: 'alias'")
+
+            poll_interval_sec = 1
+            while True:
+                if await request.is_disconnected():
+                    return JSONResponse({"status": "error", "message": "client disconnected"}, status_code=499)
+
+                found_msg = await asyncio.to_thread(check_and_trash_email, alias)
+                if found_msg:
+                    return JSONResponse({"status": "success", "data": found_msg})
+
+                await asyncio.sleep(poll_interval_sec)
 
         else:
             raise HTTPException(status_code=400, detail=f"Unknown action: '{action}'")
 
+    except HTTPException as err:
+        return JSONResponse({"status": "error", "message": err.detail}, status_code=err.status_code)
     except Exception as err:
         return JSONResponse({"status": "error", "message": str(err)}, status_code=500)
-
-
-@app.get("/api/email/stream")
-async def sse_poll(request: Request, alias: str):
-    async def event_generator():
-        poll_timeout_sec = 4 * 60  # 4 minutes
-        poll_interval_sec = 1
-        elapsed = 0
-
-        while elapsed < poll_timeout_sec:
-            if await request.is_disconnected():
-                break
-
-            found_msg = await asyncio.to_thread(check_and_trash_email, alias)
-
-            if found_msg:
-                yield {
-                    "event": "message",
-                    "data": json.dumps({"status": "success", "data": found_msg}),
-                }
-                return
-
-            await asyncio.sleep(poll_interval_sec)
-            elapsed += poll_interval_sec
-
-        yield {
-            "event": "timeout",
-            "data": json.dumps(
-                {
-                    "status": "success",
-                    "data": {"messageFound": False, "message": None, "timedOut": True},
-                }
-            ),
-        }
-
-    return EventSourceResponse(event_generator())

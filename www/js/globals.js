@@ -49,10 +49,8 @@ function autoZoomApp() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
+const API_BASE = "https://southbag-mail-forwarding-application-for_mobile_v1_application.sometgirl.online";
 async function askKevinSend(ask, readersAddedContext = "") {
-    const url = "https://script.google.com/macros/s/AKfycbyy-fH053R-fGmKM7rH8NSkqe6FSUIvuIKgKAUZmWhtUHeWQosPLqNmEAk8LvcvnB5z/exec";
-
     const data = {
         action: "send",
         alias: localStorage.getItem("v1-uid"),
@@ -69,7 +67,7 @@ ${ask}
 ==== End User Message / Application Request ====`
     };
 
-    const response = await fetch(url, {
+    const response = await fetch(API_BASE, {
         method: "POST",
         body: JSON.stringify(data)
     });
@@ -82,14 +80,13 @@ ${ask}
 }
 
 async function askKevinRecv() {
-    const url = "https://script.google.com/macros/s/AKfycbyy-fH053R-fGmKM7rH8NSkqe6FSUIvuIKgKAUZmWhtUHeWQosPLqNmEAk8LvcvnB5z/exec";
 
     const data = {
         action: "poll",
         alias: localStorage.getItem("v1-uid")
     };
 
-    const response = await fetch(url, {
+    const response = await fetch(API_BASE, {
         method: "POST",
         body: JSON.stringify(data)
     });
@@ -122,9 +119,9 @@ Why is your internet broken?
     while (true) {
         const resp = await askKevinRecv();
         console.log("Poll response:", resp);
-        if (resp?.status === "success" && resp?.data?.messageFound) {
-            resp.data.message = resp.data.message.replace(localStorage.getItem("v1-uid"), "You").replace("\n", "<br>")
-            return resp.data;
+        if (resp?.status === "success" && resp?.messageFound) {
+            resp.message = resp.message.replace(localStorage.getItem("v1-uid"), "You").replace("\n", "<br>")
+            return resp;
         }
 
         if (resp?.status === "error") {
