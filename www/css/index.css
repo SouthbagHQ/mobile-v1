@@ -11,8 +11,8 @@ html {
     background-size: 120px 120px;
     background-repeat: repeat;
     background-position: center;
-    -webkit-animation: loadingBackgroundCycle 120s infinite;
-    animation: loadingBackgroundCycle 120s infinite;
+    -webkit-animation: loadingBackgroundCycle 60s infinite;
+    animation: loadingBackgroundCycle 60s infinite;
 }
 @media (prefers-reduced-motion: reduce) {
     html {
