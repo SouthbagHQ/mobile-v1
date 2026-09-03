@@ -14,6 +14,12 @@ html {
     -webkit-animation: loadingBackgroundCycle 18s infinite;
     animation: loadingBackgroundCycle 18s infinite;
 }
+@media (prefers-reduced-motion: reduce) {
+    html {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
 
 @keyframes loadingBackgroundCycle {
     0%,
