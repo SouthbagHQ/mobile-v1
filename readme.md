@@ -14,8 +14,8 @@ This could work on iOS but it is android only because Kevin said so.
 
 # Tech Stack
 - Cordova for the app itself
-- Vibecoded JQuery Mobile UI clone (JQ Mobile UI was too opinionated)
-- Google Apps Script and Gmail for back end communication
+- Vibecoded JQuery Mobile UI clone (JQ Mobile UI was too opinionated) (only the css itself was vibecoded)
+- ~Google Apps Script and Gmail for back end communication~ now replaced with python backend 
 - Southbag AI
 - Javascript
 
