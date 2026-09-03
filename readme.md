@@ -27,6 +27,8 @@ _Solutions made for you._
 
 used to make the UI kit (I forgot about this earlier sorry!) and also the mailserver + tester (server was previously a Vibecoded google app script, ported it to python with the help of Gemini, i did not feel like doing that myself loll)
 
+wallpaper shuffler was done using AI too
+
 ---
 
 https://lore.southbag.cc/
