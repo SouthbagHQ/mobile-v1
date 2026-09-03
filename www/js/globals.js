@@ -141,6 +141,7 @@ Why is your internet broken?
 }
 window.addEventListener('resize', autoZoomApp);
 window.addEventListener('DOMContentLoaded', autoZoomApp);
+window.addEventListener('DOMContentLoaded', applyRandomWallpaperOrder);
 function generateRandomString(length = 6) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -153,6 +154,35 @@ function cAcct() {
     localStorage.setItem("v1-uid", generateRandomString())
     alert("Welcome, your user ID is: " + localStorage.getItem("v1-uid"))
     window.location.href = "home/index.html"
+}
+
+function shuffleArray(values) {
+    const array = [...values];
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function applyRandomWallpaperOrder() {
+    const indexStylesheet = document.querySelector('link[href$="css/index.css"]');
+    if (!indexStylesheet) return;
+
+    const wallpaperBasePath = new URL("../img/loaders/", indexStylesheet.href).href;
+    const wallpaperOrder = shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    const stepSize = 100 / wallpaperOrder.length;
+    const keyframeBlocks = wallpaperOrder.map((wallpaper, index) => {
+        const start = Number((index * stepSize).toFixed(2));
+        const end = Number((((index + 1) * stepSize) - 0.01).toFixed(2));
+        return `${start}%, ${end}% { background-image: url(${wallpaperBasePath}${wallpaper}.png); }`;
+    });
+
+    const randomWallpaperStyle = document.createElement("style");
+    randomWallpaperStyle.id = "random-wallpaper-order";
+    randomWallpaperStyle.textContent = `@keyframes loadingBackgroundCycle { ${keyframeBlocks.join(" ")} }`;
+    document.head.appendChild(randomWallpaperStyle);
+    document.documentElement.style.backgroundImage = `url(${wallpaperBasePath}${wallpaperOrder[0]}.png)`;
 }
 
 function fitFrameHeight(iframe) {
