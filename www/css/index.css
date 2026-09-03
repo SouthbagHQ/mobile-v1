@@ -8,7 +8,7 @@ html {
     margin: 0;
     padding: 0;
     background-image: url(../img/loaders/1.png);
-    background-size: 50%;
+    background-size: 25%;
     background-repeat: repeat;
     background-position: center;
     -webkit-animation: loadingBackgroundCycle 60s infinite;
@@ -224,6 +224,16 @@ body::after {
 .kevin-message {
     text-align: left !important;
     margin-right: auto;
+}
+.kevin-message:has(progress) :after{
+    width:100%;
+    aspect-ratio: 4 / 3 !important;
+    height:auto;
+        background-size: 100% 100%;
+    background-repeat: no-repoeat;
+    background-position: center;
+    -webkit-animation: loadingBackgroundCycle 30s infinite;
+    animation: loadingBackgroundCycle 30s infinite;
 }
 
 .user-message {
