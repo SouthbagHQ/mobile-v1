@@ -11,6 +11,7 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    -webkit-animation: loadingBackgroundCycle 18s infinite;
     animation: loadingBackgroundCycle 18s infinite;
 }
 
