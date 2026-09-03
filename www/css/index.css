@@ -225,8 +225,10 @@ body::after {
     text-align: left !important;
     margin-right: auto;
 }
-.kevin-message:has(progress) :after{
+.kevin-message:has(progress)::after{
     width:100%;
+    display:block;
+    content: " ";
     aspect-ratio: 4 / 3 !important;
     height:auto;
         background-size: 100% 100%;
@@ -235,6 +237,7 @@ body::after {
     -webkit-animation: loadingBackgroundCycle 30s infinite;
     animation: loadingBackgroundCycle 30s infinite;
 }
+
 
 .user-message {
     margin-left: auto;
