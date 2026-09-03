@@ -8,11 +8,11 @@ html {
     margin: 0;
     padding: 0;
     background-image: url(../img/loaders/1.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: 120px 120px;
+    background-repeat: repeat;
     background-position: center;
-    -webkit-animation: loadingBackgroundCycle 18s infinite;
-    animation: loadingBackgroundCycle 18s infinite;
+    -webkit-animation: loadingBackgroundCycle 120s infinite;
+    animation: loadingBackgroundCycle 120s infinite;
 }
 @media (prefers-reduced-motion: reduce) {
     html {
