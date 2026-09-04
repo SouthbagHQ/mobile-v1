@@ -1,3 +1,4 @@
+VERSION = [1,4,0]
 function extractFields(text, template) {
     text = text.replaceAll("[[", "[")
     text = text.replaceAll("]]", "]")
@@ -52,6 +53,7 @@ function sleep(ms) {
 const API_BASE = "https://southbag-mail-forwarding-application-for_mobile_v1_application.sometgirl.online";
 async function askKevinSend(ask, readersAddedContext = "") {
     const data = {
+        version: VERSION,
         action: "send",
         alias: localStorage.getItem("v1-uid"),
         body: `==== Begin System prompt ===
@@ -82,6 +84,7 @@ ${ask}
 async function askKevinRecv() {
 
     const data = {
+        version: VERSION,
         action: "poll",
         alias: localStorage.getItem("v1-uid")
     };
