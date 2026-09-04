@@ -16,7 +16,7 @@ ${msg}
     let kevinMsg = document.createElement("div")
     kevinMsg.classList.add("kevin-message")
     kevinMsg.innerHTML = `<progress></progress><br>
-Him is working on your message`
+Him is working on your message.<br><small><i>Advertisement</i></small>`
     msgs.appendChild(kevinMsg)
     kevinMsg.scrollIntoView()
 

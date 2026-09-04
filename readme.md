@@ -14,8 +14,8 @@ This could work on iOS but it is android only because Kevin said so.
 
 # Tech Stack
 - Cordova for the app itself
-- Vibecoded JQuery Mobile UI clone (JQ Mobile UI was too opinionated)
-- Google Apps Script and Gmail for back end communication
+- Vibecoded JQuery Mobile UI clone (JQ Mobile UI was too opinionated) (only the css itself was vibecoded)
+- ~Google Apps Script and Gmail for back end communication~ now replaced with python backend 
 - Southbag AI
 - Javascript
 
@@ -26,6 +26,8 @@ _Solutions made for you._
 # AI usage
 
 used to make the UI kit (I forgot about this earlier sorry!) and also the mailserver + tester (server was previously a Vibecoded google app script, ported it to python with the help of Gemini, i did not feel like doing that myself loll)
+
+wallpaper shuffler was done using AI too
 
 ---
 
