@@ -50,7 +50,7 @@ function autoZoomApp() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-const API_BASE = "https://southbag-mail-forwarding-application-for_mobile_v1_application.sometgirl.online";
+const API_BASE = "https://southbag-mail-forwarding-application-for_mobile_v1_application.novafurry.win";
 async function askKevinSend(ask, readersAddedContext = "") {
     const data = {
         version: VERSION,
