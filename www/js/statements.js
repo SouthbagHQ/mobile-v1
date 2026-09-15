@@ -1,15 +1,14 @@
+requireSignIn()
 
-askKevin("Please provide statements for the user. Respond only in valid HTML (just body content this is being inserted into another web page). This is a web-page, the Mobile Application is a lazy Cordova application. You have full control over it by inserting HTML. Redirect it to the rickroll for all I care, because I don't.")
-    .then(resp => {
-        msg = extractFields(resp?.message, "[$TYPE:$VALUE:$MSG]")
+bankingFetch("/api/account")
+    .then(account => {
         uic = document.querySelector(".ui-content");
-        uic.innerHTML = msg.string
-        msg.fields.forEach(f => {
-            fE = document.createElement("div")
-            fE.classList.add("fee-field")
-            fE.innerHTML = `<b>${f.TYPE}</b>: <i>\$${f.VALUE}</i><br>
-${f.MSG}`
-            uic.appendChild(fE)
-        })
-
+        uic.innerHTML = `<h1>Statement</h1><h3>Balance: ${money(account.balance)}</h3>`
+        if (!account.transactions.length) {
+            uic.innerHTML += `<p>Suspiciously, nothing has happened yet.</p>`
+        }
+        account.transactions.forEach(item => uic.appendChild(transactionElement(item)))
+    })
+    .catch(error => {
+        document.querySelector(".ui-content").innerHTML = `<h1>Statement</h1><p><i>${escapeHtml(error.message)}</i></p>`
     })

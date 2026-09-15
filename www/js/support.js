@@ -1,42 +1,53 @@
-let history = ``
+requireSignIn()
+
+// Support is Online Banking's chat, so the conversation follows you between
+// the app and the website.
+let history = []
+const msgs = document.querySelector(".msgs")
+
+function addMessage(role, html) {
+    const el = document.createElement("div")
+    el.classList.add(role === "user" ? "user-message" : "kevin-message")
+    el.innerHTML = html
+    msgs.appendChild(el)
+    el.scrollIntoView()
+    return el
+}
+
+bankingFetch("/api/chat")
+    .then(data => {
+        history = data.messages || []
+        history.forEach(m => addMessage(m.role, escapeHtml(m.content)))
+    })
+    .catch(() => {})
+
 function send(btn) {
     btn.disabled = true
     let msg = document.querySelector("#message").value
     document.querySelector("#message").value = ""
-    history += `==== User ====
-"""
-${msg}
-"""
-`
-    let msgs = document.querySelector(".msgs")
-    let userMsg = document.createElement("div")
-    userMsg.classList.add("user-message")
-    userMsg.innerHTML = msg
-    msgs.appendChild(userMsg)
-    let kevinMsg = document.createElement("div")
-    kevinMsg.classList.add("kevin-message")
-    kevinMsg.innerHTML = `<progress></progress><br>
-Him is working on your message.<br><small><i>Advertisement</i></small>`
-    msgs.appendChild(kevinMsg)
-    kevinMsg.scrollIntoView()
+    history.push({ role: "user", content: msg })
+    addMessage("user", escapeHtml(msg))
+    let kevinMsg = addMessage("assistant", `<progress></progress><br>
+Him is working on your message.<br><small><i>Advertisement</i></small>`)
 
-    askKevin(history, "This is a message from the Support application")
+    bankingFetch("/api/chat", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ messages: history }),
+    })
         .then(resp => {
-            history += `==== Kevin ====
-"""
-${resp?.message}
-"""
-`
-            msg = extractFields(resp?.messageHtml, "[$TYPE:$VALUE:$MSG]")
-            kevinMsg.innerHTML = msg.string
-            msg.fields.forEach(f => {
-                fE = document.createElement("div")
-                fE.classList.add("fee-field-in-msg")
-                fE.innerHTML = `<b>${f.TYPE}</b>: <i>\$${f.VALUE}</i><br>
-${f.MSG}`
-                kevinMsg.appendChild(fE)
-            })
+            const content = resp.choices?.[0]?.message?.content || ""
+            history.push({ role: "assistant", content })
+            kevinMsg.innerHTML = escapeHtml(content)
             kevinMsg.scrollIntoView()
-            btn.disabled = false
+            return bankingFetch("/api/chat", {
+                method: "PUT",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({ messages: history }),
+            })
         })
+        .catch(error => {
+            kevinMsg.innerHTML = escapeHtml(error.message)
+        })
+        .finally(() => { btn.disabled = false })
 }

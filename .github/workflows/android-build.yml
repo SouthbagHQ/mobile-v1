@@ -25,6 +25,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # config.xml points the Android app at the GitHub Pages copy of the UI, so
+      # the APK only ships a one-line page that sends the WebView there.
+      - name: Replace bundled UI with GitHub Pages loader
+        run: |
+          rm -rf www
+          mkdir www
+          echo '<!DOCTYPE html><meta charset="utf-8"><script>location.replace("https://southbaghq.github.io/mobile-v1/")</script>' > www/index.html
+
       - name: Add Android platform
         run: cordova platform add android
 
