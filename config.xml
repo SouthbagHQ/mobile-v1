@@ -8,6 +8,7 @@
         Lily
     </author>
     <content src="index.html" />
+    <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
@@ -16,6 +17,9 @@
     <!-- Allow the webview to navigate anywhere within your dev server -->
 <allow-navigation href="*" />
 <platform name="android">
+    <!-- The Android app does not bundle the UI: it loads it from GitHub Pages, so
+         the app updates whenever main is pushed. (static.yml publishes www there.) -->
+    <content src="https://southbaghq.github.io/mobile-v1/" />
     <preference
         name="AndroidWindowSplashScreenAnimatedIcon"
         value="res/splash.png" />

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="anim">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="img/logo.png" type="image/png">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="width=375, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Southbag Mobile</title>
+    <link rel="stylesheet" href="css/jqlook.css" />
+</head>
+
+<body>
+
+    <div data-role="page">
+
+        <div data-role="header">
+            <h1>Signing In</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content" style="text-align: center;">
+            <h1>Signing you in</h1>
+            <progress></progress>
+            <p>Please allow 2-5 business seconds.</p>
+        </div><!-- /content -->
+        <div data-role="footer" style="text-align: center;"><h4>Southbag, Inc. Solutions made for you<br>&copy; 0000</h4></div>
+
+    </div><!-- /page -->
+
+    <script src="js/globals.js"></script>
+    <script>
+        // Identity sends the browser back here with ?code=&state=; swap the code
+        // for tokens, then head home. Any failure goes back to the sign-in page.
+        finishSignIn()
+            .then(() => window.location.replace("home/index.html"))
+            .catch(error => window.location.replace("index.html?error=" + encodeURIComponent(error.message)));
+    </script>
+</body>
+
+</html>

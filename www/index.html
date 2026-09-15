@@ -4,7 +4,7 @@
 <head>
     <script>if(window.location.pathname.endsWith("/")) window.location.pathname += "index.html";</script>
     <script>
-        if (localStorage.getItem("v1-uid") !== null) {
+        if (localStorage.getItem("v1-auth") !== null) {
             window.location.href = "home/index.html"
         }
     </script>
@@ -40,9 +40,9 @@
         <div role="main" class="ui-content">
             <center>
                 <h1>Sign In</h1>
-                <button class="ui-shadow ui-btn ui-corner-all" onclick="cAcct()">Create an Account</button>
-                <p>Southbag Mobile accounts are non transferrable and only work in this version of the app and on this
-                    device. Sorry, not sorry.</p>
+                <button class="ui-shadow ui-btn ui-corner-all" onclick="startSignIn(this)">Sign in with Southbag Identity&trade;</button>
+                <p id="signin-error" hidden></p>
+                <p>Southbag Mobile uses the same Southbag Identity&trade; account as Online Banking. Sorry, not sorry.</p>
             </center>
         </div><!-- /content -->
         <div data-role="footer" style="text-align: center;"><h4>Southbag, Inc. Solutions made for you<br>&copy; 0000</h4></div>
@@ -50,7 +50,25 @@
     </div><!-- /page -->
 
     <script src="js/globals.js"></script>
-    <script src="/cordova.js"></script>
+    <script>
+        const signinError = document.querySelector("#signin-error");
+        const failed = new URLSearchParams(location.search).get("error");
+        if (failed) {
+            signinError.textContent = failed;
+            signinError.hidden = false;
+        }
+        async function startSignIn(btn) {
+            btn.disabled = true;
+            signinError.hidden = true;
+            try {
+                await signIn();
+            } catch (error) {
+                signinError.textContent = error.message;
+                signinError.hidden = false;
+                btn.disabled = false;
+            }
+        }
+    </script>
 
 </body>
 
