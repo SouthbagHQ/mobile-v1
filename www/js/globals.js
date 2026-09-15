@@ -12,7 +12,7 @@ const IDENTITY_CLIENT_ID = "";
 const SCOPES = "openid profile email offline_access";
 
 // Where the app lives. Works from GitHub Pages, `cordova run browser`, and the
-// Android WebView (which loads the UI from GitHub Pages).
+// Android app, which bundles www/ and serves it from https://localhost.
 const APP_ROOT = new URL("../", document.currentScript.src).href;
 const REDIRECT_URI = APP_ROOT + "callback.html";
 

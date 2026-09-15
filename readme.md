@@ -21,7 +21,7 @@ This could work on iOS but it is android only because Kevin said so.
 
 # How it is put together
 - `www/` is the whole app. `static.yml` builds it with `cordova build browser` and publishes it to GitHub Pages at https://southbaghq.github.io/mobile-v1/.
-- The Android app does **not** bundle `www/`. `config.xml` points its WebView at the GitHub Pages URL, and `android-build.yml` swaps `www/` for a one-line loader before building, so pushing to `main` updates the installed app too.
+- The Android app bundles `www/` into the APK, so it works offline-first and ships a fixed version of the UI. Cordova serves the bundled files from `https://localhost`, so that is the origin Identity and Banking see from the app (the Pages origin is what the browser build uses). Shipping UI changes to installed apps means building and distributing a new APK.
 - Sign in: `www/js/globals.js` runs the OAuth authorization code + PKCE flow against `identity.southbag.cc` as a public client and lands on `www/callback.html`. Set `IDENTITY_CLIENT_ID` to a client registered on Identity's developer page; while it is empty the app registers itself on first sign-in (one client per device, with a consent screen).
 - Data: every page calls `banking.southbag.cc/api/*` through `bankingFetch()` with the Identity access token as a bearer token. Banking opens an account the first time it sees a new customer.
 - Local dev: `cordova run browser` serves `www/` on `http://localhost:8000`; that origin is allowed by both Identity and Banking.
