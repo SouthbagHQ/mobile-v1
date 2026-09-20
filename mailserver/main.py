@@ -69,7 +69,7 @@ async def send_email(alias: str, body: str):
     msg["To"] = FIXED_TO_EMAIL
     msg["Subject"] = EMAIL_SUBJECT
     msg.set_content(processed_body)
-
+    print(msg["From"])
     try:
         result = await aiosmtplib.send(
             msg,
