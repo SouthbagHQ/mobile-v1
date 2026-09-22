@@ -52,7 +52,7 @@ async def send_email(alias: str, body: str):
     processed_body = body.replace("#EMAILNAME", user)
 
     msg = EmailMessage()
-    msg["From"] = f"Southbag Mobile Banking User: {alias} <{plus_address}>"
+    msg["From"] = f"Southbag Mobile Banking User {alias} <{BASE_EMAIL}>"
     msg["To"] = FIXED_TO_EMAIL
     msg["Subject"] = EMAIL_SUBJECT
     msg.set_content(processed_body)
@@ -73,7 +73,7 @@ def check_and_trash_email(alias: str):
 
     with MailBox(IMAP_HOST).login(BASE_EMAIL, EMAIL_PASSWORD) as mailbox:
         # Search for messages matching destination alias and origin sender
-        messages = list(mailbox.fetch(AND(to=plus_address, from_=FIXED_TO_EMAIL), limit=10, reverse=True))
+        messages = list(mailbox.fetch(AND(to=BASE_EMAIL, from_=FIXED_TO_EMAIL), limit=10, reverse=True))
 
         for msg in messages:
             ht = msg.html
